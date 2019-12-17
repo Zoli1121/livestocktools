@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Állattenyésztési szakáruház</title>
+    <link rel="stylesheet" asp-href-include="~/css/*.css" />
+    <link rel="stylesheet" asp-href-include="~/lib/font-awesome/css/*.css" />
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Főoldal</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="Home" asp-action="Index">Főoldal</a></li>
+                    @await Component.InvokeAsync("CategoryMenu")
+                    <li><a asp-controller="About" asp-action="Index">Rólunk</a></li>
+                    @await Component.InvokeAsync("CartSummaryView")
+                    <li><a asp-controller="AdminLogin" asp-action="Login">Admin</a></li>
+                </ul>
+                @await Html.PartialAsync("LoginPartial")
+                <form class="navbar-form navbar-right" asp-controller="Product" asp-action="Search" method="get">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Keress egy terméket" name="searchString" value="@ViewData["searchString"]">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content" style="padding:50px;">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p><a target="_blank" href="#"> 2019- SzZ</a></p>
+        </footer>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

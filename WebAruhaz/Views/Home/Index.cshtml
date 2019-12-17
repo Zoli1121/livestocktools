@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@using WebAruhaz.Models.ViewModels.WebShopViewModels
+
+@model NewProductsViewModel
+
+@await Html.PartialAsync("Slide")
+<h2>Új termékek </h2>
+<div class="row">
+    @foreach (var p in Model.NewProducts)
+    {
+        <partial name="ProductsSummary" model="p" />
+    }
+</div>

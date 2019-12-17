@@ -1,0 +1,30 @@
+﻿@using WebAruhaz.Models.WebShopModels
+
+@model Product
+
+<div class="container marginTop">
+    <div class="row">
+        <div class="card">
+            <div class="text-center view overlay hm-white-slight">
+                <img src="@Model.SmallImage" class="img-fluid" alt="">
+                <a href="#">
+                    <div class="mask waves-effect waves-light"></div>
+                </a>
+            </div>
+            <div class="card-block">
+                <!--Title-->
+                <h4 class="card-title">@Model.Name</h4>
+                <!--Text-->
+                <p class="card-text">@Model.Description.</p>
+                <p class="btn btn-group pull-right">
+                    <a asp-controller="Product" asp-action="List" class="btn btn-default">Mutasd az összes terméket!</a>
+
+                    <a class="btn btn-success" id="cartButton" asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@Model.ProductId">
+                        Rakd a @Model.Name -t a kosárba
+                    </a>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

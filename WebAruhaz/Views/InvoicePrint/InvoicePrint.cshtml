@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewData["Title"] = "Invoice";
+}
+
+<title>Állattenyésztési szakáruház számlakészítés</title>
+<link rel="stylesheet" asp-href-include="~/css/*.css" />
+<link rel="stylesheet" asp-href-include="~/lib/font-awesome/css/*.css" />
+<script src="~/js/jquery.js"></script>
+<script src="~/js/bootstrap.js"></script>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Számla
+            <small>            
+            #00000
+            </small>
+        </h1>
+    </section>
+    <div class="pad margin no-print">
+        <div class="callout callout-info" style="margin-bottom: 0!important;">
+            <h4><i class="fa fa-info"></i> Megjegyzés:</h4>
+            Fejlesztés alatt
+        </div>
+    </div>
+    <!-- Main content -->
+    <section class="invoice">
+        <!-- title row -->
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="fa fa-globe"></i> Fejlesztés alatt, Inc.
+                    <small class="pull-right">Date:</small>
+                </h2>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- info row -->
+        <div class="row invoice-info">
+            <div class="col-sm-4 invoice-col">
+                ELADÓ
+                <address>
+                    <strong>Cégnév</strong><br>
+                    fejlesztés alatt<br>
+                    fejlesztés alatt<br>
+                    fejlesztés alatt<br>
+                    fejlesztés alatt
+                </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+                VEVŐ
+                <address>
+                    <strong>Cégnév</strong><br>
+                    fejlesztés alatt<br>
+                    fejlesztés alatt<br>
+                    fejlesztés alatt<br>
+                    fejlesztés alatt
+                </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+                <b>Számlaszám</b><br>
+                <br>
+                <b>Rendelés szám:</b> 4F3S8J<br>
+                <b>fejlesztés alatt</b> fejlesztés alatt<br>
+                                                        <b>fejlesztés alatt:</b> 111
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Mennyiség</th>
+                            <th>Termék</th>
+                            <th>Gyári szám #</th>
+                            <th>leírás</th>
+                            <th>összeg</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Star Wars</td>
+                            <td>20191218</td>
+                            <td>A Star wars 9 bemutatója</td>
+                            <td>100000 Ft</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <!-- accepted payments column -->
+            <div class="col-xs-6">
+                <p class="lead">Fizetési módok:</p>
+                <img src="~/images/visa.png" alt="Visa">
+                <img src="~/images/mastercard.png" alt="Mastercard">
+                <img src="~/images/american-express.png" alt="American Express">
+                <img src="~/images/paypal2.png" alt="Paypal">
+                <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-6">
+                <p class="lead">2019/12/20</p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th style="width:50%">Subtotal:</th>
+                            <td>2500 Ft</td>
+                        </tr>
+                        <tr>
+                            <th>Adó (25%)</th>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <th>Shipping:</th>
+                            <td>150000</td>
+                        </tr>
+                        <tr>
+                            <th>Total:</th>
+                            <td>120000</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- this row will not appear when printing -->
+        <div class="row no-print">
+            <div class="col-xs-12">
+                <a href="/InvoicePrint/InvoicePrint" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+                <button type="button" class="btn btn-success pull-right">
+                    <i class="fa fa-credit-card"></i> Submit 
+                </button>
+                <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+                    <i class="fa fa-download"></i> PDF
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+    <div class="clearfix"></div>
+</div>
+<!-- /.content-wrapper -->
+

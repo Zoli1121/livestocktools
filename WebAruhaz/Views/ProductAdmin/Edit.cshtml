@@ -1,0 +1,131 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using WebAruhaz.Models.WebShopModels
+@model Product
+@{
+    ViewBag.Title = "Edit Product";
+    Layout = "_AdminLayout";
+}
+
+<div class="content-wrapper">
+    <form enctype="multipart/form-data" asp-controller="ProductAdmin" asp-action="Edit" method="post">
+        <input type="hidden" asp-for="ProductId" />
+
+        <section class="content">
+            <!-- Default box -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Termék szerkesztése</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                                title="Collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <label asp-for="Name"></label>
+                                <div><span asp-validation-for="Name" class="text-danger"></span></div>
+                                <input asp-for="Name" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Description"></label>
+                                <div><span asp-validation-for="Description" class="text-danger"></span></div>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Price"></label>
+                                <div><span asp-validation-for="Price" class="text-danger"></span></div>
+                                <input asp-for="Price" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="CategoryRefId" class="control-label"></label>
+                                <select asp-for="CategoryRefId" class="form-control select2" asp-items="ViewBag.CategoryRefId"></select>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="WareHouseRefId" class="control-label"></label>
+                                <select asp-for="WareHouseRefId" class="form-control select2" asp-items="ViewBag.WareHouseRefId"></select>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="RackRefId" class="control-label"></label>
+                                <select asp-for="RackRefId" class="form-control select2" asp-items="ViewBag.RackRefId"></select>
+                            </div>
+
+                            <div class="form-group">
+                                <!-- Product Image -->
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#picture" data-toggle="tab">Product Image</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="active tab-pane">
+                                            <div>
+                                                @{
+                                                    string localhost;
+                                                    HttpContextAccessor httpContextAccessor = new HttpContextAccessor();
+                                                    localhost = httpContextAccessor.HttpContext.Request.Scheme + "://" + httpContextAccessor.HttpContext.Request.Host.Value;
+                                                    string imageurl = localhost + "/images/" + Model.SmallImage;
+                                                }
+                                                <img class="profile-user-img img-responsive img-circle" src="@imageurl" alt="User profile picture">
+                                            </div>
+                                            <div>
+                                                <span class="btn btn-success fileinput-button">
+                                                    <i class="fa fa-camera bg-green"></i>
+                                                    @{ IFormFile photo=null;}
+                                                    <input asp-for="@photo" class="form-control custom-file-input">
+                                                    <label class="custom-file-label">Choose File...</label>
+                                                    @*<input id="fileupload" type="file" name="files" multiple="">*@
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <div id="progress" class="progress">
+                                                    <div class="progress-bar progress-bar-success"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div>
+                                <!-- /.nav-tabs-custom -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="box-footer">
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </div>
+                <!-- /.box-footer-->
+            </div>
+            <!-- /.box -->
+            <script>
+                $(document).ready(function () {
+                    $('.custom-file-input').on("change", function () {
+                        var fileName = $(this).val().split("\\").pop();
+                        $(this).next('.custom-file-label').html(fileName);
+                    });
+                });
+            </script>
+        </section>
+    </form>
+    <!-- Main content -->
+    <!-- /.content -->
+</div>
+@section Styles{
+    <link rel="stylesheet" href="~/css/jquery.fileupload.css" />
+}

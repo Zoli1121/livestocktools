@@ -1,0 +1,55 @@
+﻿@using WebAruhaz.Models.WebShopModels
+
+@{
+    List<Category> AllCategories = Model;
+    List<Category> MainCategories = AllCategories.Where(x => x.Parent == null).ToList();
+}
+<li class="dropdown">
+    <a asp-controller="Product" asp-action="Index"
+       class="dropdown-toggle" data-toggle="dropdown">Termékek<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        @for (int i = 0; i < MainCategories.Count; i++)
+        {
+            <li class="dropdown-submenu">
+                <a class="test" tabindex="-1" href="#"> @MainCategories[i].CategoryName</a>
+                <ul class="dropdown-menu">
+                    @{ List<Category> SubCategories = MainCategories[i].Childs.ToList(); }
+                    @for (int j = 0; j < SubCategories.Count; j++)
+                    {
+                        @if (SubCategories[j].Childs != null)
+                        {
+                            <li class="dropdown-submenu">
+                                <a class="test" tabindex="-1" href="#">@SubCategories[j].CategoryName</a>
+                                <ul class="dropdown-menu">
+
+                                    @for (int k = 0; k < SubCategories[j].Childs.ToList().Count; k++)
+                                    {
+                                        <li>
+                                            <a asp-controller="Product" asp-action="List"
+                                               asp-route-cat="@SubCategories[j].Childs.ToList()[k].CategoryName">@SubCategories[j].Childs.ToList()[k].CategoryName</a>
+                                        </li>
+                                    }
+
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="dropdown-submenu">
+                                <a class="test" tabindex="-1" href="#">@SubCategories[j].CategoryName</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a asp-controller="Product" asp-action="List"
+                                           asp-route-cat="@SubCategories[j].CategoryName">@SubCategories[j].CategoryName</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    }
+                </ul>
+            </li>
+        }
+        <li class="divider"></li>
+        <li><a asp-controller="Product" asp-action="List" asp-route-cat="">Összes termék</a></li>
+    </ul>
+</li>

@@ -1,0 +1,15 @@
+﻿@using WebAruhaz.Models.ViewModels.WebShopViewModels
+
+@model ProductsListViewModel
+
+<div class="row">
+    @foreach (var product in Model.Products)
+    {
+        <partial name="ProductsSummary" model="product" />
+    }
+</div>
+
+<div page-model="@Model.PageViewModel" page-action="List" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-secondary"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+</div>
